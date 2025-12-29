@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="permissions-insert" author="admin">
+        <insert tableName="permissions">
+            <column name="id" value="1"/>
+            <column name="permission" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="permissions">
+            <column name="id" value="2"/>
+            <column name="permission" value="ROLE_ADMIN"/>
+        </insert>
+        <insert tableName="permissions">
+            <column name="id" value="3"/>
+            <column name="permission" value="ROLE_MANAGER"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="chats-insert" author="admin">
+        <insert tableName="chats">
+            <column name="id" value="1"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+        <insert tableName="chats">
+            <column name="id" value="2"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+        <insert tableName="chats">
+            <column name="id" value="3"/>
+            <column name="status" value="CLOSED"/>
+        </insert>
+        <insert tableName="chats">
+            <column name="id" value="4"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="users-insert" author="admin">
+        <insert tableName="users">
+            <column name="id" value="1"/>
+            <column name="email" value="admin@finalse.com"/>
+            <column name="password" value="$2a$10$Alaqwft.k7X5MbDu45oKWOqzMolAurSksyKenqsmvtYFa1ps20CrW"/>
+            <column name="chat_id" value="1"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" value="2"/>
+            <column name="email" value="john.doe@gmail.com"/>
+            <column name="password" value="$2a$10$Alaqwft.k7X5MbDu45oKWOqzMolAurSksyKenqsmvtYFa1ps20CrW"/>
+            <column name="chat_id" value="2"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" value="3"/>
+            <column name="email" value="jane.smith@outlook.com"/>
+            <column name="password" value="$2a$10$Alaqwft.k7X5MbDu45oKWOqzMolAurSksyKenqsmvtYFa1ps20CrW"/>
+            <column name="chat_id" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="users-permissions-insert" author="admin">
+        <insert tableName="users_permissions">
+            <column name="user_id" value="1"/>
+            <column name="permissions_id" value="2"/>
+        </insert>
+        <insert tableName="users_permissions">
+            <column name="user_id" value="1"/>
+            <column name="permissions_id" value="1"/>
+        </insert>
+        <insert tableName="users_permissions">
+            <column name="user_id" value="2"/>
+            <column name="permissions_id" value="1"/>
+        </insert>
+        <insert tableName="users_permissions">
+            <column name="user_id" value="3"/>
+            <column name="permissions_id" value="1"/>
+        </insert>
+        <insert tableName="users_permissions">
+            <column name="user_id" value="3"/>
+            <column name="permissions_id" value="3"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="dialogs-insert" author="admin">
+        <insert tableName="dialogs">
+            <column name="id" value="1"/>
+            <column name="message_from_id" value="1"/>
+            <column name="message" value="Hello! Welcome to the platform."/>
+            <column name="datetime" value="2024-12-29 10:00:00"/>
+            <column name="chat_id" value="1"/>
+        </insert>
+        <insert tableName="dialogs">
+            <column name="id" value="2"/>
+            <column name="message_from_id" value="2"/>
+            <column name="message" value="Thank you! Happy to be here."/>
+            <column name="datetime" value="2024-12-29 10:05:00"/>
+            <column name="chat_id" value="2"/>
+        </insert>
+        <insert tableName="dialogs">
+            <column name="id" value="3"/>
+            <column name="message_from_id" value="1"/>
+            <column name="message" value="How can I help you today?"/>
+            <column name="datetime" value="2024-12-29 10:10:00"/>
+            <column name="chat_id" value="3"/>
+        </insert>
+        <insert tableName="dialogs">
+            <column name="id" value="4"/>
+            <column name="message_from_id" value="3"/>
+            <column name="message" value="I need to configure my server."/>
+            <column name="datetime" value="2024-12-29 11:00:00"/>
+            <column name="chat_id" value="4"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="servers-insert" author="admin">
+        <insert tableName="servers">
+            <column name="id" value="1"/>
+            <column name="user_id" value="1"/>
+            <column name="ssh" value="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7...admin@finalse"/>
+        </insert>
+        <insert tableName="servers">
+            <column name="id" value="2"/>
+            <column name="user_id" value="2"/>
+            <column name="ssh" value="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD8...john.doe@gmail"/>
+        </insert>
+        <insert tableName="servers">
+            <column name="id" value="3"/>
+            <column name="user_id" value="2"/>
+            <column name="ssh" value="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQE9...john.doe2@gmail"/>
+        </insert>
+        <insert tableName="servers">
+            <column name="id" value="4"/>
+            <column name="user_id" value="3"/>
+            <column name="ssh" value="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQF0...jane.smith@outlook"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="payments-insert" author="admin">
+        <insert tableName="payments">
+            <column name="id" value="1"/>
+            <column name="user_id" value="1"/>
+            <column name="date" value="2024-12-01"/>
+            <column name="value" value="99.99"/>
+            <column name="status" value="PAID"/>
+        </insert>
+        <insert tableName="payments">
+            <column name="id" value="2"/>
+            <column name="user_id" value="2"/>
+            <column name="date" value="2024-12-15"/>
+            <column name="value" value="49.99"/>
+            <column name="status" value="PAID"/>
+        </insert>
+        <insert tableName="payments">
+            <column name="id" value="3"/>
+            <column name="user_id" value="2"/>
+            <column name="date" value="2024-12-28"/>
+            <column name="value" value="149.99"/>
+            <column name="status" value="PENDING"/>
+        </insert>
+        <insert tableName="payments">
+            <column name="id" value="4"/>
+            <column name="user_id" value="3"/>
+            <column name="date" value="2024-11-20"/>
+            <column name="value" value="199.99"/>
+            <column name="status" value="PAID"/>
+        </insert>
+        <insert tableName="payments">
+            <column name="id" value="5"/>
+            <column name="user_id" value="3"/>
+            <column name="date" value="2024-12-25"/>
+            <column name="value" value="29.99"/>
+            <column name="status" value="FAILED"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

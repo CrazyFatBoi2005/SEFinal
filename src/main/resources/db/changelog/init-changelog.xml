@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-5.0.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1766957266866-1" author="crazy">
+        <createTable tableName="chats">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_chats"/>
+            </column>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="dialog_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1766957266866-2" author="crazy">
+        <createTable tableName="dialogs">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_dialogs"/>
+            </column>
+            <column name="message_from_id" type="BIGINT"/>
+            <column name="message" type="VARCHAR(255)"/>
+            <column name="datetime" type="VARCHAR(255)"/>
+            <column name="chat_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1766957266866-3" author="crazy">
+        <createTable tableName="payments">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_payments"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="date" type="VARCHAR(255)"/>
+            <column name="value" type="DOUBLE"/>
+            <column name="status" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1766957266866-4" author="crazy">
+        <createTable tableName="permissions">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_permissions"/>
+            </column>
+            <column name="permission" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1766957266866-5" author="crazy">
+        <createTable tableName="servers">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_servers"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="ssh" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1766957266866-6" author="crazy">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="chat_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1766957266866-7" author="crazy">
+        <createTable tableName="users_permissions">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permissions_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1766957266866-8" author="crazy">
+        <addUniqueConstraint columnNames="dialog_id" constraintName="uc_chats_dialog" tableName="chats"/>
+    </changeSet>
+    <changeSet id="1766957266866-9" author="crazy">
+        <addUniqueConstraint columnNames="chat_id" constraintName="uc_dialogs_chat" tableName="dialogs"/>
+    </changeSet>
+    <changeSet id="1766957266866-10" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="dialog_id" baseTableName="chats" constraintName="FK_CHATS_ON_DIALOG"
+                                 referencedColumnNames="id" referencedTableName="dialogs"/>
+    </changeSet>
+    <changeSet id="1766957266866-11" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="dialogs" constraintName="FK_DIALOGS_ON_CHAT"
+                                 referencedColumnNames="id" referencedTableName="chats"/>
+    </changeSet>
+    <changeSet id="1766957266866-12" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="message_from_id" baseTableName="dialogs"
+                                 constraintName="FK_DIALOGS_ON_MESSAGE_FROM" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1766957266866-13" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="payments" constraintName="FK_PAYMENTS_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1766957266866-14" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="servers" constraintName="FK_SERVERS_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1766957266866-15" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="chat_id" baseTableName="users" constraintName="FK_USERS_ON_CHAT"
+                                 referencedColumnNames="id" referencedTableName="chats"/>
+    </changeSet>
+    <changeSet id="1766957266866-16" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="permissions_id" baseTableName="users_permissions"
+                                 constraintName="fk_useper_on_permission" referencedColumnNames="id"
+                                 referencedTableName="permissions"/>
+    </changeSet>
+    <changeSet id="1766957266866-17" author="crazy">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_permissions"
+                                 constraintName="fk_useper_on_user" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

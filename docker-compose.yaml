@@ -1,0 +1,20 @@
+services:
+  main-db:
+    image: 'postgres:latest'
+    container_name: 'main'
+    environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '2345:5432'
+
+  test-db:
+    image: 'postgres:latest'
+    container_name: 'test'
+    environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '2346:5432'

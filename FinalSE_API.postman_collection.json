@@ -1,0 +1,933 @@
+{
+	"info": {
+		"_postman_id": "finalse-api-collection",
+		"name": "FinalSE API",
+		"description": "API collection for FinalSE Spring Boot application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "adminEmail",
+			"value": "admin@example.com",
+			"type": "string"
+		},
+		{
+			"key": "adminPassword",
+			"value": "admin123",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@example.com\",\n    \"password\": \"admin123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "login"]
+						},
+						"description": "Login with email and password. Returns user info and roles."
+					},
+					"response": []
+				},
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/registration?user_email=newuser@example.com&user_password=password123&user_repeat_password=password123",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "registration"],
+							"query": [
+								{
+									"key": "user_email",
+									"value": "newuser@example.com"
+								},
+								{
+									"key": "user_password",
+									"value": "password123"
+								},
+								{
+									"key": "user_repeat_password",
+									"value": "password123"
+								}
+							]
+						},
+						"description": "Register a new user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", ""]
+						},
+						"description": "Get all users (ADMIN only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "1"]
+						},
+						"description": "Get user by ID (ADMIN only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Save User Permissions",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/save-user?id=1&permissions=1&permissions=2",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "save-user"],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "permissions",
+									"value": "1"
+								},
+								{
+									"key": "permissions",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Update user permissions (ADMIN only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Save Password",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/save-password?user_old_password=oldpass&user_new_password=newpass&user_repeat_new_password=newpass",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "save-password"],
+							"query": [
+								{
+									"key": "user_old_password",
+									"value": "oldpass"
+								},
+								{
+									"key": "user_new_password",
+									"value": "newpass"
+								},
+								{
+									"key": "user_repeat_new_password",
+									"value": "newpass"
+								}
+							]
+						},
+						"description": "Change password for authenticated user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "users", "1"]
+						},
+						"description": "Delete user by ID (ADMIN only)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Servers",
+			"item": [
+				{
+					"name": "Get All Servers",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/servers/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servers", ""]
+						},
+						"description": "Get all servers (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Server by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/servers/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servers", "1"]
+						},
+						"description": "Get server by ID (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Server",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"ssh\": \"ssh://user@server.example.com:22\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/servers/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servers", ""]
+						},
+						"description": "Create a new server (ADMIN, MANAGER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Server",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"ssh\": \"ssh://newuser@server.example.com:22\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/servers/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servers", "1"]
+						},
+						"description": "Update server by ID (ADMIN, MANAGER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Server",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/servers/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "servers", "1"]
+						},
+						"description": "Delete server by ID (ADMIN only)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Get All Payments",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/payments/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "payments", ""]
+						},
+						"description": "Get all payments (ADMIN, MANAGER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/payments/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "payments", "1"]
+						},
+						"description": "Get payment by ID (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Payment",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"2024-01-15\",\n    \"value\": 99.99,\n    \"status\": \"PENDING\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/payments/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "payments", ""]
+						},
+						"description": "Create a new payment (ADMIN, MANAGER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1,\n    \"date\": \"2024-01-15\",\n    \"value\": 149.99,\n    \"status\": \"COMPLETED\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/payments/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "payments", "1"]
+						},
+						"description": "Update payment by ID (ADMIN, MANAGER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Payment",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/payments/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "payments", "1"]
+						},
+						"description": "Delete payment by ID (ADMIN only)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chats",
+			"item": [
+				{
+					"name": "Get All Chats",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chats/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chats", ""]
+						},
+						"description": "Get all chats (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Chat by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chats/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chats", "1"]
+						},
+						"description": "Get chat by ID (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Chat",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACTIVE\",\n    \"dialog_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chats/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chats", ""]
+						},
+						"description": "Create a new chat (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Chat",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"CLOSED\",\n    \"dialog_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chats/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chats", "1"]
+						},
+						"description": "Update chat by ID (ADMIN, MANAGER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Chat",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chats/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "chats", "1"]
+						},
+						"description": "Delete chat by ID (ADMIN only)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dialogs",
+			"item": [
+				{
+					"name": "Get All Dialogs",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/dialogs/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "dialogs", ""]
+						},
+						"description": "Get all dialogs (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Dialog by ID",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/dialogs/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "dialogs", "1"]
+						},
+						"description": "Get dialog by ID (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Dialog",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"chat_id\": 1,\n    \"message_from_id\": 1,\n    \"message\": \"Hello, this is a test message\",\n    \"datetime\": \"2024-01-15T10:30:00\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/dialogs/",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "dialogs", ""]
+						},
+						"description": "Create a new dialog (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Dialog",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"chat_id\": 1,\n    \"message_from_id\": 1,\n    \"message\": \"Updated message content\",\n    \"datetime\": \"2024-01-15T11:00:00\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/dialogs/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "dialogs", "1"]
+						},
+						"description": "Update dialog by ID (ADMIN, MANAGER, USER)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Dialog",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{adminEmail}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{adminPassword}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/dialogs/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "dialogs", "1"]
+						},
+						"description": "Delete dialog by ID (ADMIN only)"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

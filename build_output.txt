@@ -1,0 +1,103 @@
+
+> Task :compileJava FAILED
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:1: error: illegal character: '\ufeff'
+﻿package com.example.finalse.entities;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:1: error: class, interface, enum, or record expected
+﻿package com.example.finalse.entities;
+         ^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:3: error: class, interface, enum, or record expected
+import jakarta.persistence.*;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:4: error: class, interface, enum, or record expected
+import lombok.AllArgsConstructor;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:5: error: class, interface, enum, or record expected
+import lombok.Builder;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:6: error: class, interface, enum, or record expected
+import lombok.Data;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:7: error: class, interface, enum, or record expected
+import lombok.NoArgsConstructor;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:1: error: illegal character: '\ufeff'
+﻿package com.example.finalse.entities;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:1: error: class, interface, enum, or record expected
+﻿package com.example.finalse.entities;
+         ^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:3: error: class, interface, enum, or record expected
+import jakarta.persistence.*;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:4: error: class, interface, enum, or record expected
+import lombok.AllArgsConstructor;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:5: error: class, interface, enum, or record expected
+import lombok.Builder;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:6: error: class, interface, enum, or record expected
+import lombok.Data;
+^
+C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:7: error: class, interface, enum, or record expected
+import lombok.NoArgsConstructor;
+^
+14 errors
+
+[Incubating] Problems report is available at: file:///C:/Users/crazy/IdeaProjects/FinalSE/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:1: error: class, interface, enum, or record expected
+  ﻿package com.example.finalse.entities;
+           ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:3: error: class, interface, enum, or record expected
+  import jakarta.persistence.*;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:4: error: class, interface, enum, or record expected
+  import lombok.AllArgsConstructor;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:5: error: class, interface, enum, or record expected
+  import lombok.Builder;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:6: error: class, interface, enum, or record expected
+  import lombok.Data;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:7: error: class, interface, enum, or record expected
+  import lombok.NoArgsConstructor;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:1: error: class, interface, enum, or record expected
+  ﻿package com.example.finalse.entities;
+           ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:3: error: class, interface, enum, or record expected
+  import jakarta.persistence.*;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:4: error: class, interface, enum, or record expected
+  import lombok.AllArgsConstructor;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:5: error: class, interface, enum, or record expected
+  import lombok.Builder;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:6: error: class, interface, enum, or record expected
+  import lombok.Data;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:7: error: class, interface, enum, or record expected
+  import lombok.NoArgsConstructor;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Dialog.java:1: error: illegal character: '\ufeff'
+  ﻿package com.example.finalse.entities;
+  ^
+  C:\Users\crazy\IdeaProjects\FinalSE\src\main\java\com\example\finalse\entities\Payments.java:1: error: illegal character: '\ufeff'
+  ﻿package com.example.finalse.entities;
+  ^
+  14 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to generate a Build Scan (powered by Develocity).
+
+BUILD FAILED in 2s
+1 actionable task: 1 executed
